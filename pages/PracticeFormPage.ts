@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { expect, Page } from '@playwright/test'
 import { BasePage } from './BasePage'
 
 export class PracticeFormPage extends BasePage {
@@ -23,6 +23,21 @@ export class PracticeFormPage extends BasePage {
     readonly SelectSubject = this.page.locator("#subjectsInput")
 
     readonly chooseFile = this.page.locator("#uploadPicture")
+
+    //readonly Address = this.page.locator(".Current Address")
+    readonly Address = this.page.getByPlaceholder("Current Address")
+
+    readonly StateL = this.page.locator("#react-select-3-input")
+    readonly CityL = this.page.locator("#city")
+
+    //clicksubmit button
+
+    readonly SubmitL = this.page.locator("#submit")
+
+    //Verification 
+    readonly SucessModel = this.page.locator(".modal-content")
+    readonly SucessTitle = this.page.locator("#example-modal-sizes-title-lg")
+    
 
     constructor(page: Page) {
         super(page)
@@ -73,13 +88,37 @@ export class PracticeFormPage extends BasePage {
 
     }
 
-    async FileUpload(filePath: string){
-        await this.uploadfile(this.chooseFile, filePath)
+    async FileUpload(filePath: string) {
+        await this.uploadFile(this.chooseFile, filePath)
 
     }
 
+    async CurrentAddress(name: string) {
+        await this.fill(this.Address, name)
+    }
+
+    async StateAndCity(State: string, city: string) {
+
+        await this.scrollIntoView(this.StateL)
+        await this.click(this.StateL)
+        await this.page.getByText(State).click()
+
+        await this.click(this.CityL)
+        await this.page.getByText(city).click()
 
 
+    }
+
+    async SubmitButton() {
+        await this.click(this.SubmitL)
+    }
+
+
+    async verification(){
+        await expect(this.SucessModel).toBeVisible()
+        await expect(this.SucessTitle).toHaveText("Thanks for submitting the form")
+
+    }
 
 
 

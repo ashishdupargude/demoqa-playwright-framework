@@ -20,7 +20,13 @@ export class BasePage {
         await locator.press(key)
     }
 
-    async uploadfile(locator: Locator, filePath: string){
+    async uploadFile(locator: Locator, filePath: string){
         await locator.setInputFiles(filePath)
     }
+
+    async scrollIntoView(locator: Locator){
+        await locator.scrollIntoViewIfNeeded()
+    }
 }
+
+
