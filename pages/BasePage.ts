@@ -16,4 +16,11 @@ export class BasePage {
         await locator.selectOption(value)
     }
 
+    async pressKey(locator: Locator, key: string){
+        await locator.press(key)
+    }
+
+    async uploadfile(locator: Locator, filePath: string){
+        await locator.setInputFiles(filePath)
+    }
 }

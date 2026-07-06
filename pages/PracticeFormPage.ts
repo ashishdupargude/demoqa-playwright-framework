@@ -19,10 +19,10 @@ export class PracticeFormPage extends BasePage {
     readonly dateOfBirthInput = this.page.locator("#dateOfBirthInput")
     readonly SelectMonth = this.page.locator(".react-datepicker__month-select")
     readonly SelectYear = this.page.locator(".react-datepicker__year-select")
-    
-     
-      
 
+    readonly SelectSubject = this.page.locator("#subjectsInput")
+
+    readonly chooseFile = this.page.locator("#uploadPicture")
 
     constructor(page: Page) {
         super(page)
@@ -54,19 +54,29 @@ export class PracticeFormPage extends BasePage {
         await this.fill(this.MobNumber, name)
     }
 
-    async selectDateOfBirth(month: string, year:string, day:string){
+    async selectDateOfBirth(month: string, year: string, day: string) {
         await this.click(this.dateOfBirthInput)
 
         await this.selectOption(this.SelectMonth, month)
 
-        await this.selectOption(this.SelectYear,year)
+        await this.selectOption(this.SelectYear, year)
         const formattedDay = day.padStart(3, "0")
-        const date =this.page.locator(`.react-datepicker__day--${formattedDay}`)
+        const date = this.page.locator(`.react-datepicker__day--${formattedDay}`)
         await this.click(date)
 
 
     }
 
+    async Subject(name: string) {
+        await this.fill(this.SelectSubject, name)
+        await this.SelectSubject.press('Enter')
+
+    }
+
+    async FileUpload(filePath: string){
+        await this.uploadfile(this.chooseFile, filePath)
+
+    }
 
 
 
