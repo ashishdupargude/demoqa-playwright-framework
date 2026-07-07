@@ -1,5 +1,6 @@
 import { test } from '@playwright/test'
 import { PracticeFormPage } from '../pages/PracticeFormPage'
+import practiceFormData from "../test-data/practiceForm.json";
 
 let practiceForm : PracticeFormPage
 
@@ -15,19 +16,19 @@ test("addUsername" , async ({ page }) => {
 
 
 
-    await practiceForm.enterFirstName("Ashish")
-    await practiceForm.enterLastName('Dupargude')
+    await practiceForm.enterFirstName(practiceFormData.firstName)
+    await practiceForm.enterLastName(practiceFormData.lastName)
     //await practiceFrom.click("maleRadio")
     await practiceForm.selectMale()
     await practiceForm.clickSports()
 
-    await practiceForm.enterEmail("abc@gmail.com")
-    await practiceForm.enterMobNumber("1234567890")
+    await practiceForm.enterEmail(practiceFormData.email)
+    await practiceForm.enterMobNumber(practiceFormData.mobile)
 
     //select DOB
-    await practiceForm.selectDateOfBirth("August", "1999", "15")
+    await practiceForm.selectDateOfBirth(practiceFormData.month, practiceFormData.year, practiceFormData.day)
     //Select Subject
-    await practiceForm.Subject("English")
+    await practiceForm.Subject(practiceFormData.subject)
     
 
 
@@ -36,9 +37,9 @@ test("addUsername" , async ({ page }) => {
     //  await practiceFrom.FileUpload("C:/Users/lenovo/Downloads")
     await practiceForm.FileUpload("C:/Users/lenovo/Downloads/ChatGPT Image Jun 6, 2026, 02_07_04 PM.png")  //both work above one as well
     
-    await practiceForm.CurrentAddress("Solapur Pune Raod")
+    await practiceForm.CurrentAddress(practiceFormData.address)
 
-    await practiceForm.StateAndCity("NCR" , "Delhi")
+    await practiceForm.StateAndCity(practiceFormData.state , practiceFormData.city)
 
     await practiceForm.SubmitButton() 
     
