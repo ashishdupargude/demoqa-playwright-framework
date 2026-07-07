@@ -1,10 +1,20 @@
 import { test } from '@playwright/test'
 import { PracticeFormPage } from '../pages/PracticeFormPage'
 
-test('Open Practice Form', async ({ page }) => {
+let practiceForm : PracticeFormPage
 
-    const practiceForm = new PracticeFormPage(page)
+test.beforeEach (async ({ page }) => {
+
+    practiceForm = new PracticeFormPage(page)
     await practiceForm.navigate()
+
+})
+
+
+test("addUsername" , async ({ page }) => {
+
+
+
     await practiceForm.enterFirstName("Ashish")
     await practiceForm.enterLastName('Dupargude')
     //await practiceFrom.click("maleRadio")
@@ -30,7 +40,8 @@ test('Open Practice Form', async ({ page }) => {
 
     await practiceForm.StateAndCity("NCR" , "Delhi")
 
-    await practiceForm.SubmitButton()
+    await practiceForm.SubmitButton() 
+    
 
     await practiceForm.verification()
 
