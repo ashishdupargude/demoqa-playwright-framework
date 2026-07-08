@@ -1,18 +1,14 @@
-import { test } from '@playwright/test'
-import { PracticeFormPage } from '../pages/PracticeFormPage'
-import practiceFormData from "../test-data/practiceForm.json";
+//import { test } from '@playwright/test'
 
-let practiceForm : PracticeFormPage
+import { test ,expect } from "../fixtures/practiceFixture"
 
-test.beforeEach (async ({ page }) => {
-
-    practiceForm = new PracticeFormPage(page)
-    await practiceForm.navigate()
-
-})
+//import { PracticeFormPage } from '../pages/PracticeFormPage'
+import practiceFormData from "../test-data/practiceForm.json"
 
 
-test("addUsername" , async ({ page }) => {
+
+
+test("addUsername" , async ({ page, practiceForm }) => {
 
 
 
