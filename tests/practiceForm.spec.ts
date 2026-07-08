@@ -28,10 +28,10 @@ test("addUsername" , async ({ page, practiceForm }) => {
     
 
 
-    //await practiceFrom.FileUpload("test-data/ChatGPT Image Jun 6, 2026, 02_07_04 PM.png")
+    await practiceForm.FileUpload("test-data/ChatGPT Image Jun 6, 2026, 02_07_04 PM.png")
 
     //  await practiceFrom.FileUpload("C:/Users/lenovo/Downloads")
-    await practiceForm.FileUpload("C:/Users/lenovo/Downloads/ChatGPT Image Jun 6, 2026, 02_07_04 PM.png")  //both work above one as well
+    //await practiceForm.FileUpload("C:/Users/lenovo/Downloads/ChatGPT Image Jun 6, 2026, 02_07_04 PM.png")  //both work above one as well
     
     await practiceForm.CurrentAddress(practiceFormData.address)
 
