@@ -24,6 +24,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat 'npm test'
+                bat 'npm run allure:generate'
             }
         }
     }
@@ -31,6 +32,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
         }
     }
 }
