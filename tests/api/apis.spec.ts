@@ -29,7 +29,7 @@ test('FirstApi', async ({ request }) => {
 //FirstLogin run login API
 //capture the token from the login API response
 //use that token while calling the create artical API
-test('API - Create and delete article workflow', async ({ request }) => {
+test('API - Create, Update and delete article workflow', async ({ request }) => {
 
     const tokenRespnse = await request.post('https://conduit-api.bondaracademy.com/api/users/login', {
 
@@ -72,7 +72,39 @@ test('API - Create and delete article workflow', async ({ request }) => {
     console.log(tokenRespnseJSON)
     expect(newArticleCreate.status()).toBe(201)
     expect(newArticleRespnseJSON.article.title).toBe('asdf2')
+
+
     const slug = newArticleRespnseJSON.article.slug
+
+
+
+    const UpdateArticleCreate = await request.put(`https://conduit-api.bondaracademy.com/api/articles/${slug}`, {
+
+        data: {
+            "article": {
+                "title": "asdf 12 updated",
+                "description": "asdf 12",
+                "body": "asdf 12",
+                "tagList": [
+                    "asdf"
+                ],
+                "slug": "asdf-123-54760"
+            }
+        },
+        headers: {
+            authorization: `Token ${authtoken}`
+        }
+
+
+    })
+    const updatedArticlesResponseJSON = await UpdateArticleCreate.json()
+    //console.log(articlesResponseJSON)
+    expect(UpdateArticleCreate.status()).toBe(200)
+    expect(updatedArticlesResponseJSON.article.title).toBe('asdf 12 updated')
+
+    const Newslug = updatedArticlesResponseJSON.article.slug
+
+
 
 
     const articlesResponse = await request.get('https://conduit-api.bondaracademy.com/api/articles?limit=10&offset=0', {
@@ -84,11 +116,11 @@ test('API - Create and delete article workflow', async ({ request }) => {
     const articlesResponseJSON = await articlesResponse.json()
     //console.log(articlesResponseJSON)
     expect(articlesResponse.status()).toBe(200)
-    expect(articlesResponseJSON.articles[0].title).toBe('asdf2')
+    expect(articlesResponseJSON.articles[0].title).toBe('asdf 12 updated')
 
 
 
-    const deleteArticle = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${slug}`, {
+    const deleteArticle = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${Newslug}`, {
         headers: {
             authorization: `Token ${authtoken}`
         }
