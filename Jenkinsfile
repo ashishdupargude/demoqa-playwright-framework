@@ -24,7 +24,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat 'npm test'
-                bat 'npm run allure:generate'
+               
             }
         }
     }
@@ -32,11 +32,11 @@ pipeline {
     post {
         always {
 
-            allure([
-            includeProperties: false,
-            jdk: '',
-            results: [[path: 'allure-results']]
-        ])
+        //     allure([
+        //     includeProperties: false,
+        //     jdk: '',
+        //     results: [[path: 'allure-results']]
+        // ])
             archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
             archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
         }
