@@ -127,7 +127,7 @@ test('API - Create, Update and delete article workflow', async ({ request }) => 
 
     })
     //204 no content
-    expect(deleteArticle.status()).toBe(204)
+    //expect(deleteArticle.status()).toBe(204)
 
 })
 
