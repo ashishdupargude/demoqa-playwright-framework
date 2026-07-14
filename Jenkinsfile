@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -30,10 +29,7 @@ pipeline {
 
     post {
         always {
-            // allure([
-            //     includeProperties: false,
-            //     results: [[path: 'allure-results']]
-            // ])
+            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
         }
     }
 }
