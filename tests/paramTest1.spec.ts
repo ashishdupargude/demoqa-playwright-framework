@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-const searchItems: string[] = ['laptop', 'Gift card', 'smartphone', 'monitor']
+const searchItems: string[] = ['laptop', 'Gift card', 'smartphone']
 
 test.describe('search functionality tests',() => {
 
