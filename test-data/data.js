@@ -25,4 +25,4 @@ export const loginIDs = [
         validity: 'invalid'
 
     }
-]
+]     
