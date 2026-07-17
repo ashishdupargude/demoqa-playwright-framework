@@ -28,3 +28,14 @@ test('paramterized method', async ({ page }) => {
     await onFormLayoutsPage.submitUsingTHeGridWithFromCredentialsAndSelectOption('abc@test.com', '1234', 'Option 1')
 
 })
+
+test('LineForm', async ({ page }) => {
+    const navigateTo = new NavigationPage(page)
+    const onInlineFormPage = new FromLayoutsPage(page)
+
+    await navigateTo.FromLayoutsPage()
+    await onInlineFormPage.submitInlineformWithEmailandCheckbox('ashish', 'ashish@gmail.com', true)
+    await page.pause()
+
+
+})
