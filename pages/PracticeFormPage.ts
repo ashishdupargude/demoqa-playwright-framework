@@ -37,7 +37,7 @@ export class PracticeFormPage extends BasePage {
     //Verification 
     readonly SucessModel = this.page.locator(".modal-content")
     readonly SucessTitle = this.page.locator("#example-modal-sizes-title-lg")
-    
+
 
     constructor(page: Page) {
         super(page)
@@ -114,7 +114,7 @@ export class PracticeFormPage extends BasePage {
     }
 
 
-    async verification(){
+    async verification() {
         await expect(this.SucessModel).toBeVisible()
         await expect(this.SucessTitle).toHaveText("Thanks for submitting the form")
 
