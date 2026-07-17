@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
-import { NavigationPage } from '../pages/NavigationPage.spec'
+import { NavigationPage } from '../pages/NavigationPage'
+import { FromLayoutsPage } from '../pages/FromLayoutsPage'
 
 test.beforeEach(async ({ page }) => {
 
@@ -15,4 +16,15 @@ test('Navigate to fromLayoutsPage', async ({ page }) => {
     await navigateTo.smartTablePage()
     await navigateTo.tooltipPage()
     await navigateTo.tostrPage()
+})
+
+test('paramterized method', async ({ page }) => {
+
+    const navigateTo = new NavigationPage(page)
+    const onFormLayoutsPage = new FromLayoutsPage(page)
+
+
+    await navigateTo.FromLayoutsPage()
+    await onFormLayoutsPage.submitUsingTHeGridWithFromCredentialsAndSelectOption('abc@test.com', '1234', 'Option 1')
+
 })
