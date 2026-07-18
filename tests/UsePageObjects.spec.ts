@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test'
 import { NavigationPage } from '../pages/NavigationPage'
 import { FromLayoutsPage } from '../pages/FromLayoutsPage'
+import { DatePickerPage } from '../pages/DatePickerPage'
+
 
 test.beforeEach(async ({ page }) => {
 
@@ -35,7 +37,17 @@ test('LineForm', async ({ page }) => {
 
     await navigateTo.FromLayoutsPage()
     await onInlineFormPage.submitInlineformWithEmailandCheckbox('ashish', 'ashish@gmail.com', true)
-    await page.pause()
+    
+})
+
+test('DatePick', async ({ page }) => {
+    const navigateTo = new NavigationPage(page)
+    const onFormLayoutsPage = new FromLayoutsPage(page)
+    const onDatePickerPage = new DatePickerPage(page)
 
 
+    await navigateTo.datePickerPage()
+    await onDatePickerPage.selectDatePickerDateFromTOday(5000)
+   await page.pause()
+    
 })
