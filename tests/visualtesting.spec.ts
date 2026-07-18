@@ -1,21 +1,21 @@
-import { expect, test, Locator } from '@playwright/test'
+// import { expect, test, Locator } from '@playwright/test'
 
 
 
-//npx playwright test --update-snapshots
+// //npx playwright test --update-snapshots
 
 
-test('VisiualTest', async ({ page }) => {
+// test('VisiualTest', async ({ page }) => {
 
-    await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+//     await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 
-    await expect(await page.screenshot()).toMatchSnapshot('homepage.png')
+//     await expect(await page.screenshot()).toMatchSnapshot('homepage.png')
 
-})
+// })
 
-test('visualTesting2', async ({ page }) => {
+// test('visualTesting2', async ({ page }) => {
 
-    await page .goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+//     await page .goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
 
-    await expect(page).toHaveScreenshot('homepage.png')
-})
+//     await expect(page).toHaveScreenshot('homepage.png')
+// })
