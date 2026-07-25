@@ -7,7 +7,7 @@ export class FromLayoutsPage {
     constructor(page: Page) {
 
         this.page = page
-
+  
     }
 
     async submitUsingTHeGridWithFromCredentialsAndSelectOption(email: string, password: string, optionText: string) {

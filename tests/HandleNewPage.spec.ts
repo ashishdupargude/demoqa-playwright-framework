@@ -19,4 +19,4 @@ test('HandelNewTab', async ({ context }) => {
     await page.pause()
 
 
-})
+}) 
